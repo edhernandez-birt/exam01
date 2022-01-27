@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inbox</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form #formulario="ngForm">
+    <!-- <ion-label>E-mail</ion-label> -->
+    E-mail: 
+    <ion-input name="email" type="email" placeholder="Introduce email" [(ngModel)]="email" required>
+    </ion-input>
+    <ion-label>Altura en metros</ion-label>
+    <ion-input name="altura" type="number" placeholder="Altura en metros" [(ngModel)]="altura" required>
+    </ion-input>
+    <ion-label>Peso en kgs</ion-label>
+    <ion-input name="peso" type="number" placeholder="Peso en kgs" [(ngModel)]="peso" required>
+    </ion-input>
+    <ion-item>
+      <ion-label>IMC: {{imc}}
+        <ion-badge *ngIf="imc>25" color="danger"> IMC Elevado </ion-badge>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+
+      <ion-label>
+        <ion-button [disabled]="formulario.invalid" (click)="onClick()">
+          Calcular IMC
+        </ion-button>
+      </ion-label>
+    </ion-item>
+  </form>
+
+  <!-- <ion-item>
+  <ion-label>IMC: {{imc}} </ion-label>
+  <ion-badge *ngIf="imc>25" color="danger"> Alto  </ion-badge>
+  </ion-item> -->
+
+  <ion-list *ngFor="let it of valoresLista">
+    <ion-item [routerLink]="it.enlace">
+      <ion-label>{{it.nombre}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
